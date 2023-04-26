@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* opacity = 0 투명 , 요소가 있어 자리를 차지
+        visibility : hidden 숨김 , 요소가 있음
+        두개를 동시에 사용하면 display : none 랑 같아짐*/
+      #modal {
+        display: none; /* 요소 자체가 없음*/
+        position: fixed;
+        width: 250px;
+        height: 250px;
+        background: red;
+
+        text-align: center;
+        line-height: 250px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #btn {
+        background-color: aquamarine;
+        padding: 5px;
+        cursor: pointer;
+        width: 150px;
+      }
+      .ani {
+        animation-name: showModal;
+        animation-duration: 0.6s;
+      }
+      @keyframes showModal {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        let modal = document.querySelector("#modal");
+        let btn = document.querySelector("#btn");
+        let flag = true;
+        btn.onclick = function () {
+          if (flag) {
+            modal.style.display = "block";
+            this.innerText = "Close";
+          } else {
+            modal.style.display = "none";
+            this.innerText = "Login";
+          }
+          flag = !flag; // 토글 같은 거지만 누를때마다 값이 달라진다는 뜻.
+        };
+        // 이벤트 위임 : 부모에 이벤트를 걸고 해당 자식을 찾기
+        window.onclick = function (e) {
+          console.dir(document.documentElement); // html
+          console.dir(e.traget); // 사용자가 클릭한 요소
+          if (e.traget === document.documentElement) {
+            modal.style.display = "none";
+            flag = true;
+            btn.innerText = "Login";
+          }
+        };
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="modal" class="ani">Show</div>
+    <div id="btn">Loing</div>
+  </body>
+</html>

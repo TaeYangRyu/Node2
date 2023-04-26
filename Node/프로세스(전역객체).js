@@ -25,5 +25,5 @@ process.argv.forEach(function (item, index, arr) {
 // }); //콜백 함수- 문자 숫자 자기자신
 // setTimeout : 일정 시간 동안 대기.
 // setTimeout(function () {
-//   console.log("쉬발아 ㅋ");
+//   console.log("s");
 // }, 5000);

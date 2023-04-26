@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #modal {
+        display: none;
+        position: fixed;
+        width: 250px;
+        height: 250px;
+        line-height: 250px;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgb(155, 35, 202);
+      }
+      #btn1 {
+        background-color: rgb(205, 164, 244);
+        border-radius: 12px;
+        padding: 5px;
+        cursor: pointer;
+        width: 150px;
+        text-align: center;
+      }
+      .ani {
+        animation-duration: 0.6s;
+        animation-name: showBox;
+      }
+      @keyframes showBox {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="modal" class="ani">모델</div>
+    <div id="btn1">Login</div>
+    <div id="container">
+      <label for="user"><b>UserName</b></label>
+      <input type="text" id="user" placeholder="EnterUserName" required />
+
+      <label for="paw"><b>UserPassword</b></label>
+      <input
+        type="password"
+        id="paw"
+        placeholder="EnterUserPassword"
+        required
+      />
+      <input type="submit" value="Login" />
+    </div>
+    <script>
+      let modal = document.querySelector("#modal");
+      let btn1 = document.querySelector("#btn1");
+      let flag = true;
+
+      btn1.onclick = function () {
+        if (flag) {
+          modal.style.display = "block";
+          this.innerText = "close";
+        } else {
+          modal.style.display = "none";
+          this.innerText = "Login";
+        }
+        flag = !flag;
+      };
+      window.onclick = function (e) {
+        console.dir(document.documentElement);
+        console.dir(e.target);
+        if (e.target === document.documentElement) {
+          modal.style.display = "none";
+          flag = true;
+          btn1.innerText = "Login";
+        }
+      };
+    </script>
+  </body>
+</html>
