@@ -29,14 +29,14 @@ wiondw.onload = function(){
 //   return a + b;
 // })(7, 8);
 //콜백 함수
-function add(a, b, func) {
-  let c = a + b;
-  func(c);
-}
+// function add(a, b, func) {
+//   let c = a + b;
+//   func(c);
+// }
 
-function myFunc(val) {
-  console.log(val);
-}
-add(7, 8, myFunc);
+// function myFunc(val) {
+//   console.log(val);
+// }
+// add(7, 8, myFunc);
 
 // console.log(add(7, 8)); //함수의 사용에서 쓰인 인수 ,인자 arguments

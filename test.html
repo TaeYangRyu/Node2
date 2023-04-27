@@ -8,7 +8,36 @@
   </head>
   <body>
     <script>
-      // 원시 데이터
+      // for (let i = 2; i <= 10; i++) {
+      //   if (i % 2 === 0) {
+      //     alert(i);
+      //   }
+      // }
+      // let num;
+      // do {
+      //   num = prompt("100을 초과하는 숫자를 입력", 0);
+      // } while (num <= 100 && num);
+
+      let user = prompt("주인의 이름을 입력", "");
+      if (user === "태양") {
+        alert("주인님 어서오세요");
+        let pa = prompt("주인님 비밀번호를...", "");
+        if (pa === 8109) {
+          alert("진짜 주인님 이시군요 ~!");
+        } else if (pa === " " || pa === null) {
+          alert("입력을 안하는거 보아 꺼지렴~");
+        } else {
+          alert("주인님 ㅎㅇ");
+        }
+      } else if (user === " " || user === null) {
+        alert("입력을 취소했어 꺼져");
+      } else {
+        alert("너는 주인이 아니구나 꺼져");
+      }
+
+      // let t; //undefined
+      // let a = null;
+      // // 원시 데이터
       //숫자
       //bigInt
       //문자열
@@ -18,9 +47,9 @@
       //undefined
       //객체 오브젝 object
       //심볼 symbol
-      alert(typeof false);
-      //비교 연산자 > ,< ,<= ,>= ,== ,!= ,  ===, !===
-      let a = null; // object
+      // alert(typeof false);
+      // //비교 연산자 > ,< ,<= ,>= ,== ,!= ,  ===, !===
+      // let a = null; // object
       //null은 객체 초기화
       //   alert(typeof a);
       //   let b;
@@ -37,18 +66,31 @@
       //   let age = prompt("나이 적어", 100);
       //   alert("당신의 나이는" + age + "입니다");
 
-      //   let you = confirm("당신은 십색기 입니까?");
+      //   let you = confirm("");
       //   alert(you);
       //   let result = prompt("ㅋㅋ", 9);
       //   alert(result);
-      //   let yesno = confirm("성인 이니?");
+      //   let yesno = confirm("?");
       //   yesno ? alert("성인") : alert("미성년");
-      let str = "123";
-      let num = Number(str);
-      alert(typeof num);
+      // let str = "123";
+      // let num = Number(str);
+      // alert(typeof num);
       //+, -, /, * ,% ,**
       // + 문자를 합쳐주기도함
       //형변환 - 자동형변환(암묵적 형변환) , 수동형변환(명시적 형변환)
+
+      // let test = 1;
+      // tset || alert("구문");
+
+      // test && alert("구문");
+      // if (1 < 12 || "가을" != "겨울") {
+      //   console.log("참");
+      // }
+      // 1 < 12 && "가을" != "겨울" && console.log("참");
+      // let hour = 9;
+      // if (hour > 10 || hour > 18) {
+      //   alert("영업시간아닙니다");
+      // }
     </script>
   </body>
 </html>
