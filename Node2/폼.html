@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- //java, nodejs
+    //브라우저에서 데이터를 전송하는 방법 
+    1.Get : 주소로 데이터를 전송하는 방식 (보안이 취약함, 양의 제한)
+    2.Post: 헤더, 바디로 데이터를 전송하는 방식(보안 좋음, 무제한)
+
+-->
+    <!-- Get -->
+    <a href="https://search.naver.com/search.naver?query=제주도"
+      >네이버로 값 전송</a
+    >
+    <form action="https://www.bing.com/search" method="GET" target="show">
+      <input type="text" name="q" />
+      <input type="submit" value="검색" />
+    </form>
+    <iframe
+      src="about:blank"
+      frameborder="0"
+      name="show"
+      width="100%"
+      height="200px"
+    ></iframe>
+
+    <!-- post -->
+    <form
+      action="https://nid.naver.com/nidlogin.login"
+      method="POST"
+      name="naverLogin"
+      onsubmit="return checkLogin()"
+    >
+      <!-- 리턴을 해야 작동됨 -->
+      <input type="text" name="id" /><br />
+      <input type="text" name="pw" /><br />
+      <input type="submit" value="로그인" />
+    </form>
+
+    <script>
+      //폼선택
+      console.log(document.forms[1]);
+      //해당 폼의 자식
+      console.log(document.forms[1].elements.id);
+      console.log(document.forms[1].elements.pw);
+      console.log(document.querySelector("[name = id]"));
+      console.log(document.getElementsByName("id")[0]);
+      function checkLogin() {
+        //유효성 검사(사용자가 값을 정확하게 사용했는지 검사)
+        alert("접속하시겠습니까?");
+        let id = document.forms[1].elements.id;
+        let pw = document.forms[1].elements.pw;
+        if (id.value == "") {
+          alert("아이뒤를 입력해주세요");
+          id.focus();
+          return false;
+        } else if (pw.value == "") {
+          alert("비번을 입력해주세요");
+          pw.focus();
+          return false;
+        }
+        return true; // 전송해제;true 하면 전송됨
+      }
+    </script>
+  </body>
+</html>
