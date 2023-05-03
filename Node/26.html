@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #del {
+        /* display: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>학생등록</legend>
+      <div>
+        <div>
+          <label for="stName">이름</label>
+          <input type="text" id="stName" />
+        </div>
+        <div>
+          <label for="stAge">나이</label>
+          <input name="age" type="number" id="stAge" />
+        </div>
+        <div>
+          <label for="call">전화번호</label>
+          <input name="call" type="number" id="call" />
+        </div>
+
+        <div>
+          <button id="btn">등록</button>
+        </div>
+      </div>
+    </fieldset>
+
+    <div id="list"></div>
+    <button id="del">삭제</button>
+    <script language="javascript">
+      let btn = document.querySelector("button");
+      let name = document.querySelector("#stName");
+      let age = document.querySelector("#stAge");
+      let list = document.querySelector("#list");
+      let tell = document.querySelector("#call");
+      let listDel = document.querySelector("#del");
+
+      let students = []; //배열초기화
+      listDel.onclick = function () {
+        let list;
+      };
+
+      btn.onclick = function () {
+        let student = makeStudent(name.value, age.value, tell.value);
+
+        students.push(student);
+
+        showList();
+        name.value = "";
+        age.value = "";
+        name.focus();
+        tell.value = "";
+      };
+
+      function makeStudent(name, age, tell, btn) {
+        return { name, age, tell };
+      }
+
+      function showList() {
+        list.innerHTML = "";
+
+        for (let student in students) {
+          list.insertAdjacentHTML(
+            "beforeend",
+            `<div>${students[student].name},${students[student].age},${students[student].tell}</div>`
+          );
+
+          console.log(students[student]);
+        }
+      }
+
+      window.onload = function () {
+        document.getElementById("stName").onkeydown = function (e) {
+          if (event.keyCode == 13) {
+            document.getElementById("stAge").focus();
+          }
+        };
+        document.getElementById("stAge").onkeydown = function (e) {
+          if (event.keyCode == 13) {
+            document.getElementById("call").focus();
+          }
+        };
+        document.getElementById("call").onkeydown = function (e) {
+          if (event.keyCode == 13) {
+            document.getElementById("btn").focus();
+          }
+        };
+        document.getElementById("btn").onkeydown = function (e) {
+          if (event.keyCode == 13) {
+            document.getElementById("del").focus();
+          }
+        };
+      };
+
+      //3.리스트에 나이 옆에 삭제 버튼을 만들고 누르면 해당하는 요소 삭제
+    </script>
+  </body>
+</html>

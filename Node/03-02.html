@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="target1"></div>
+    <div id="target"></div>
+    <script>
+      //매번 고유한 값을 생성
+      console.log(new Date().getTime()); //1970 년 1월 1일 0시로 시작해서 매시간을 초단위 계산
+      console.log(Math.random()); // 0 <=  random  < 1 난수
+      console.log(new Date().getTime() + Math.random() * 1000);
+
+      console.log(this);
+      function test() {
+        console.log(this);
+      }
+      test();
+      // let obj = new object ();
+      // let obj= {};
+      //func = new func(); 키워드
+      let t = new test();
+
+      let user = {
+        firstName: "보라",
+        sayHi() {
+          console.log(this);
+          let arrow = () => console.log(this.firstName); // 보라
+          arrow();
+          let that = this;
+          let nomal = function () {
+            console.log(this.firstName); // undefined
+          };
+          nomal();
+        },
+      };
+
+      user.sayHi(); // 보라
+
+      let person = {
+        name: "홍길동",
+        age: 28,
+        say() {
+          console.log(this.name);
+        },
+        wa() {},
+      };
+      function Person(name, age) {
+        let isAdmin = true; // 지역 변수.
+        let word = function () {}; //지역 함수
+        this.name = name; // 속성
+        this.age = age;
+        this.say = function () {
+          //메서드
+          console.log(this.name);
+        };
+      }
+      let go = new Person("고길동", 28);
+      go.say();
+
+      let kim = new Person("김길동", 28);
+      kim.say();
+      let che = new Person("채길동", 28);
+      che.say();
+      person.wa();
+
+      function Test() {
+        let that = {};
+
+        that.a = "test";
+        return that;
+      }
+      let te = new test();
+    </script>
+  </body>
+</html>

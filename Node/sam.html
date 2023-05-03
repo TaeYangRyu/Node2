@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function objMember(target) {
+        let obj = {
+          id: 0,
+          name: null,
+          age: null,
+          phone: null,
+          button: null,
+          list: null,
+          students: [],
+          key: "",
+          setRnd: function () {
+            return (new Date().getTime() + Math.random()) * 10000 + "";
+          },
+          init: function (target) {
+            this.key = this.setRnd();
+            let initHTML = `<fieldset id="mem${this.key}">
+                        <legend>학생등록</legend>
+                        <div>
+                            <div>
+                                <label for="stName">이름</label>
+                                <input type="text" id="stName"> 
+                            </div>
+                            <div>
+                                <label for="stAge">나이</label>
+                                <input type="number" id="stAge"> 
+                            </div>
+                            <div>
+                                <label for="stPhone">전화</label>
+                                <input type="num" id="stPhone">
+                            </div>
+                            <div>
+                                <button>등록</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <table id="list${this.key}">
+                        <tr>
+                            <th>이름</th>
+                            <th>나이</th>
+                            <th>전화</th>
+                            <th></th>
+                        </tr>
+                    </table>`;
+            let el = document.querySelector(target);
+            el.insertAdjacentHTML("afterbegin", initHTML);
+            this.name = document.querySelector("#mem" + this.key + " #stName");
+            this.age = document.querySelector("#mem" + this.key + " #stAge");
+            this.phone = document.querySelector(
+              "#mem" + this.key + " #stPhone"
+            );
+            this.button = document.querySelector("#mem" + this.key + " button");
+            this.list = document.querySelector("#list" + this.key);
+            var that = this;
+            this.button.onclick = function () {
+              that.upStudent();
+            };
+            this.name.onkeyup = function (e) {
+              if (e.keyCode == 13) {
+                that.age.focus();
+              }
+            };
+            this.age.onkeyup = function (e) {
+              if (e.keyCode == 13) {
+                that.phone.focus();
+              }
+            };
+            this.phone.onkeyup = function (e) {
+              if (e.keyCode == 13) {
+                that.upStudent();
+              }
+            };
+          },
+          upStudent() {
+            let student = this.makeStudent(
+              this.name.value,
+              this.age.value,
+              this.phone.value
+            );
+            this.students.push(student);
+            this.showList();
+            this.name.value = "";
+            this.age.value = "";
+            this.phone.value = "";
+            this.name.focus();
+          },
+          makeStudent(name, age, phone) {
+            return { id: this.id++, name, age, phone };
+          },
+          showList() {
+            this.list.innerHTML = `<table id="list">
+                                        <tr>
+                                            <th>이름</th>
+                                            <th>나이</th>
+                                            <th>전화</th>
+                                            <th></th>
+                                        </tr>
+                                    </table>`;
+            let btnId = 0;
+            let that = this;
+            for (let student in this.students) {
+              this.list.insertAdjacentHTML(
+                "beforeend",
+                `<tr><td>${this.students[student].name}</td><td>${this.students[student].age}</td><td>${this.students[student].phone}</td><td><button id="btn${btnId}">삭제</button></td></tr>`
+              );
+              let btn = document.querySelector(
+                "#list" + this.key + " #btn" + btnId++
+              );
+              let id = this.students[student].id;
+              btn.onclick = function () {
+                that.delStudent(id);
+              };
+            }
+          },
+          delStudent(id) {
+            let index = this.students.findIndex(function (item) {
+              return item.id == id;
+            });
+            this.students.splice(index, 1);
+            this.showList();
+          },
+        };
+
+        obj.init(target);
+      }
+
+      objMember("body");
+      objMember("body");
+      objMember("body");
+    </script>
+  </body>
+</html>

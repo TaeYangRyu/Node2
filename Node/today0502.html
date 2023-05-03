@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      background-color: red;
+      left: 0;
+      transition: 2s;
+    }
+    span {
+      width: 150px;
+      height: 150px;
+      background: blue;
+      display: block;
+      position: relative;
+      left: 1000px;
+      transition: 3s;
+    }
+    body {
+      margin: 0px;
+    }
+  </style>
+  <body>
+    <div></div>
+    <span></span>
+    <script>
+      //static; 고정
+      //대기 후 실행 - 콜백
+      //div요소를 100px 움직인 후 alert 실행
+      //   let div = document.querySelector("div");
+      //   let span = document.querySelector("span");
+
+      //   document.body.onclick = function () {
+      //     // div.style.left = '100px';
+      //     // alert("종료");
+      //     moveDiv(div, 5, console.log);
+      //     moveDiv(span, 1, console.log);
+      //   };
+      //   //nodejs //네트워크는 비동기 이벤트 기반
+      //   function moveDiv(div, duration, callback = function () {}) {
+      //     div.style.transition = duration + "s";
+      //     div.style.left = "100px";
+      //     console.dir(getComputedStyle(div).left);
+
+      // let timer = setInterval(function () {
+      //   let left = getComputedStyle(div)
+      //   console.log(left);
+      //   console.log(div.style.left);
+      //   if (left == "100px") {
+      //     callback("종료");
+      //     clearInterval(timer);
+      //   }
+      // }, 500);
+      // // setTimeout(function() {
+      //   callback('종료');
+      // }, duration * 1000);
+      //   }
+
+      //변수 - 원시 데이터
+      //함수는 코드들의 집합을 저장한 변수
+      //필요시 언제든지 재사용 가능
+      //리턴값 : 사용하지 않으면 undfined가 리턴(반환값)됨
+      //함수 안에서 조기리턴은 함수 중지.
+      //   // 인자들...가짐
+
+      //   //함수의 정의
+
+      //   let val = function () {
+      //     let test = 12;
+      //     if (test > 10) return "행복"; // 함수 끝 리턴을 이부분에서 해서 다음 부분은 실행안함
+      //     console.log(test);
+      //     //if , for , while
+
+      //     return "행복";
+      //   };
+      //   function test() {
+      //     let test = "홍길동";
+      //     console.log(test);
+      //   }
+
+      //   //함수의 사용(부른다,call)
+      //   console.log(val()); // val 메소드 ()실행
+      //   val();
+      //   val();
+      //   val();
+      //   val();
+      //   val();
+      //   console.log(test());
+
+      //콜백함수 대기후 실행 - 콜백
+
+      //   function ask(question, yes, no) {
+      //     if (ask(question)) {
+      //       yes();
+      //       {
+      //       }
+      //     } else {
+      //       no();
+      //     }
+      //     function checkOk() {
+      //       alert("확인");
+      //     }
+      //     function checkNo() {
+      //       alert("체크취소");
+      //     }
+      //   }
+      //   ask("동의하실?", checkOk, checkNo);
+
+      //함수 선언문
+
+      //   test(); //호이스팅
+      //   func(); // 에러
+      //   function test() {
+      //     console.log(test);
+      //   }
+      //   let func = function () {
+      //     console.log("func");
+      //   };
+
+      //   function ask(question, yes, no) {
+      //     if (confirm(question)) {
+      //       yes();
+      //     } else {
+      //       no();
+      //     }
+      //     function ok() {
+      //       alert("yes");
+      //     }
+      //     function nope() {
+      //       alert("no");
+      //     }
+      //   }
+      //   ask("동의", ok, nope);
+      //   console.log(yes);
+
+      //화살표 함수
+      // 인자가 하나일 경우 ( )생략
+      //하나의 리턴일 경우 {}생략
+      //   let func1 = (a, b) => {
+      //     return a + b;
+      //   };
+      //   let func2 = (a, b) => a + b;
+      //   let a = 7;
+      //   let b = 8;
+      //   a = func1(a, b);
+      for (let i = 0; i < 10; i++) {
+        console.log(i);
+      }
+      let span = document.querySelector("span");
+      let div = document.querySelector("div");
+      document.body.onclick = function () {
+        divPlay(div, 5, console.log());
+        divPlay(span, 3, console.log());
+      };
+
+      function divPlay(div, span, duration, callback = function () {}) {
+        div.style.left = "200px";
+        div.transition = duration + "s";
+
+        setTimeout(function () {
+          callback("종료");
+        }, 1000 * 100);
+      }
+    </script>
+  </body>
+</html>

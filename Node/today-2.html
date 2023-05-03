@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      let div = document.querySelector("div");
+      //   let div2 = div;
+      let div2 = document.createElement("div"); // 요소 div 만듬
+      console.log(div2);
+
+      //   //객체: 변수(속성 ) + 함수 (메서드)를 저장하는 공간
+
+      //   // call by value : 값에 의한 저장
+      //   let message = "hello";
+      //   let pharse = message;
+
+      //   message = "hi";
+      //   console.log(message + ":" + pharse);
+
+      //   // call by reference : 참조에 의한 저장 (주소)
+      //   let obj = { name: "홍길동" };
+      //   let ref = obj;
+
+      //   let three = { name: "홍길동" };
+
+      //   //   obj.name = "고길동";
+      //   console.log(obj.name + " : " + ref.name);
+      //   console.log(obj == ref);
+      //   console.log(obj.name == three.name);
+
+      let person = {
+        name: "홍길동",
+        age: 12,
+        class: {
+          ban: 1,
+          num: 7,
+        },
+        say(para) {
+          console.log("hi" + para);
+        },
+      };
+      person.walk = function () {
+        console.log("walk");
+      };
+      //유지보수가 좋아지고, 전역변수 사용이 줄어듦
+      person.say("hellow");
+      person.walk();
+      //   let clone = {};
+      //   //얉은 복사
+      //   for (let key in person) {
+      //     if (typeof person[key] != "object") clone[key] = person[key];
+      //     else clone[key] = {};
+      //     for (let key2 in person[key]) {
+      //       clone[key][key2] = person[key][key2];
+      //     }
+      //   }
+
+      //   person.class.ban = 10;
+      //   console.dir(person.class.ban);
+      //   console.dir(clone.class.ban);
+
+      //   //깊은 복사
+      //   function objClone(obj) {
+      //     let clone = {};
+      //     for (let key in obj) {
+      //       if (typeof obj[key] == "object") {
+      //         clone[key] = objClone(obj[key]); // 재귀 함수.
+      //       } else {
+      //         clone[key] = obj[key];
+      //       }
+      //     }
+      //     return clone;
+      //   }
+      //   let clone1 = objClone(person);
+      //   person.class.ban = 10;
+      //   console.log(person.class.ban);
+      //   console.log(clone.class.ban);
+    </script>
+  </body>
+</html>
