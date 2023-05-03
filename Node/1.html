@@ -10,92 +10,88 @@
     <div id="time"></div>
     <div id="zz"></div>
     <script>
-            let obj2 = {
-              word: "타이머",
-              sconed(the) {
-                let timer = document.querySelector(the);
-                let on = this;
-                window.setInterval(function () {
-                  timer.innerText =
-                    on.word +
-                    " = " +
-                    new Date().getHours() +
-                    " : " +
-                    new Date().getMinutes() +
-                    " : " +
-                    new Date().getSeconds();
-                }, 1000);
-              },
-            };
+      let obj2 = {
+        word: "타이머",
+        sconed(the) {
+          let timer = document.querySelector(the);
+          let on = this;
+          window.setInterval(function () {
+            timer.innerText =
+              on.word +
+              " = " +
+              new Date().getHours() +
+              " : " +
+              new Date().getMinutes() +
+              " : " +
+              new Date().getSeconds();
+          }, 1000);
+        },
+      };
 
-            let obj3 = {
-              word: "지구의 시간",
-              th(div) {
-                let time = document.querySelector(div);
-                let timekey = this;
-                window.setInterval(function () {
-                  time.innerText =
-                    timekey.word +
-                    "=" +
-                    new Date().getHours() +
-                    " : " +
-                    new Date().getMinutes() +
-                    " : " +
-                    new Date().getSeconds();
-                });
-              },
-            };
-            obj3.th("#zz");
+      let obj3 = {
+        word: "지구의 시간",
+        th(div) {
+          let time = document.querySelector(div);
+          let timekey = this;
+          window.setInterval(function () {
+            time.innerText =
+              timekey.word +
+              "=" +
+              new Date().getHours() +
+              " : " +
+              new Date().getMinutes() +
+              " : " +
+              new Date().getSeconds();
+          });
+        },
+      };
+      obj3.th("#zz");
 
-            obj2.sconed("#time");
+      obj2.sconed("#time");
 
-            let calculator = {
-              sum() {
-                return this.a + this.b;
-              },
-              mul() {
-                return this.a * this.b;
-              },
-              read() {
-                this.a = +prompt("첫번째 값", 0);
-                this.b = +prompt("두번째 값", 0);
-              },
-            };
-            calculator.read();
-            alert(calculator.sum());
-            alert(calculator.mul());
+      let calculator = {
+        sum() {
+          return this.a + this.b;
+        },
+        mul() {
+          return this.a * this.b;
+        },
+        read() {
+          this.a = +prompt("첫번째 값", 0);
+          this.b = +prompt("두번째 값", 0);
+        },
+      };
+      calculator.read();
+      alert(calculator.sum());
+      alert(calculator.mul());
 
-            let ladder = {
-              step: 0,
-              up() {
-                this.step++;
-                return this;
-              },
-              down() {
-                this.step--;
-                return this;
-              },
-              showStep: function () {
-                // 사다리에서 몇 번째 단에 올라와 있는지 보여줌
-                alert(this.step);
-                return this;
-              },
-            };
-            ladder.up().up().down().showStep();
+      let ladder = {
+        step: 0,
+        up() {
+          this.step++;
+          return this;
+        },
+        down() {
+          this.step--;
+          return this;
+        },
+        showStep: function () {
+          // 사다리에서 몇 번째 단에 올라와 있는지 보여줌
+          alert(this.step);
+          return this;
+        },
+      };
+      ladder.up().up().down().showStep();
 
-            let calculator1 = new Calculaotor()
-            calculator1.read();
+      let calculator1 = new Calculaotor();
+      calculator1.read();
       let calculator2 = {
-          sum(){
-              return this.a + this.b;
-          }
-          mul(){
-              return this.a * this.b;
-
-          }
-      }
-            alert("Sum=" + calculator1.sum());
-            alert("Mul=" + calculator1.mul());
+        sum() {
+          return this.a + this.b;
+        },
+      };
+      alert("Sum=" + calculator1.sum());
+      alert("Mul=" + calculator1.mul());
     </script>
   </body>
 </html>
