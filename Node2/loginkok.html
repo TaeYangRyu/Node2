@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      // location 객체 주소를 가지고 있는 객체
+      // https://www.w3schools.com/js/js_string_methods.asp
+      let userId = "user";
+      let userPw = "7777";
+
+      let query = location.search.substring(1);
+      let arrQuery = query.split("&");
+      for (let i = 0; i < arrQuery.length; i++) {
+        console.log(arrQuery[i]);
+        let arrVal = arrQuery[i].split("=");
+        if (arrVal[0 == "id"]) {
+          console.log(arrVal[1]);
+          if (arrVal[1] == userId) {
+            console.log("회원 아이디 일치");
+          } else {
+            console.log("아이디 불일칠");
+          }
+        } else if (arrVal[0] == "pw") {
+          console.log("pw =" + arrVal[1]);
+        }
+        if (arrVal[1] == userPw) {
+          console.log("비밀번호 일치");
+        } else {
+          console.log("비밀번호 불 일칠");
+        }
+      }
+
+      let Id = "user";
+      let Pw = "7777";
+      function getParam(param) {
+        let query = location.search.substring(1);
+        let arrQuery = query.split("&");
+        for (let i = 0; i < arrQuery.length; i++) {
+          let arrVal = arrQuery[i].split("=");
+          if (arrVal[0] == param) {
+            return arrVal[1];
+          }
+        }
+      }
+      function isLogin() {
+        let id = getParam("id");
+        let pw = getParam("pw");
+        if (id == Id && pw == Pw) {
+          console.log("회원");
+        } else {
+          console.log("비회원");
+        }
+      }
+      console.log(getParam);
+      isLogin();
+      getParam();
+    </script>
+  </head>
+  <body></body>
+</html>

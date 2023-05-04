@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+      #container {
+        background-image: url(photo-1440964829947-ca3277bd37f8.jpg);
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+      }
+      .logo {
+        float: left;
+        font-size: 24px !important;
+        padding: 12px 24px !important;
+        color: white;
+      }
+      section {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .comingsoon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+      }
+      .comingsoon span:nth-child(1) {
+        font-size: 64px !important;
+        font-weight: 400;
+        margin: 10px 0;
+      }
+
+      .comingsoon span:nth-child(3) {
+        font-size: 18px !important;
+      }
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        color: white;
+        padding: 12px 24px !important;
+      }
+      a {
+        text-decoration: none;
+        cursor: pointer;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="logo">
+        <span>Logo</span>
+      </div>
+      <section>
+        <div class="comingsoon">
+          <span>COMING SOON</span>
+          <span></span>
+          <span> 35 days left</span>
+        </div>
+        <div class="loginBox">
+          <form action="login_ok.html" method="get" onsubmit="return isLogin()">
+            <input type="text" name="id" id="userId" placeholder="user" />
+            <input
+              type="password"
+              name="pw"
+              id="userPw"
+              placeholder="password"
+            />
+            <input type="submit" value="LOGIN" id="Log" />
+          </form>
+        </div>
+      </section>
+      <footer>
+        <a href="https://www.w3schools.com/w3css/w3css_templates.asp"
+          >Powered by w3.css</a
+        >
+      </footer>
+    </div>
+
+    <script>
+      const log1 = document.querySelector("#userId");
+      const log2 = document.querySelector("#userPw");
+
+      function isLogin() {
+        let id = document.forms[0].elements.id;
+        let pw = document.forms[0].elements.pw;
+
+        if (id.value == "") {
+          alert("입력하지 않았습니다.");
+          id.focus();
+          return false;
+        } else if (pw.value == "") {
+          alert("입력하지 않았습니다.");
+          pw.focus();
+          return false;
+        }
+
+        return true;
+      }
+      alert("Login plz");
+    </script>
+  </body>
+</html>

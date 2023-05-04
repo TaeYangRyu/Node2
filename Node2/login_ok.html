@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let id = "sunny";
+      let pw = "1023";
+      function getParam(param) {
+        let query = location.search.substring(1);
+
+        let arrQuery = query.split("&");
+        console.log(arrQuery);
+        for (let i = 0; i < arrQuery.length; i++) {
+          let arrVal = arrQuery[i].split("=");
+          if (arrVal[0] == param) {
+            console.log(arrVal[1]);
+            return arrVal[1];
+          }
+        }
+      }
+
+      function makeUser() {
+        let user = getParam("id");
+        let pws = getParam("pw");
+        // console.log(pws);
+        if (user == "sunny" && pws == "1023") {
+          alert("환영");
+        } else {
+          alert("정보오류");
+        }
+      }
+      console.log(makeUser());
+      console.log(getParam());
+    </script>
+  </body>
+</html>
